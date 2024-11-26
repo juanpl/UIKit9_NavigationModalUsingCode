@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ViewControllerB.swift
 //  UIKit9_NavigationModalUsingCode
 //
 //  Created by Juan Pablo Lasprilla Correa on 25/11/24.
@@ -7,14 +7,14 @@
 
 import UIKit
 
-class ViewControllerA: UIViewController {
+class ViewControllerB: UIViewController {
     
-    private lazy var swiftbetaButton: UIButton = {
+    private lazy var dismissButton: UIButton = {
         var configuration = UIButton.Configuration.bordered()
-        configuration.title = "Present View Controller A"
+        configuration.title = "Dismiss View Controller B"
         
         let button = UIButton(type: .system, primaryAction: UIAction(handler: { _ in
-            self.startNavigation()
+            self.dismissViewControllerB()
         }))
         
         button.configuration = configuration
@@ -22,25 +22,23 @@ class ViewControllerA: UIViewController {
         return button
         
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .green
+        view.backgroundColor = .white
         
-        view.addSubview(swiftbetaButton)
+        view.addSubview(dismissButton)
         
         NSLayoutConstraint.activate([
-            swiftbetaButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            swiftbetaButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            dismissButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            dismissButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
-        // Do any additional setup after loading the view.
+        
     }
     
-    func startNavigation(){
-        self.present(ViewControllerB(), animated: true)
+    func dismissViewControllerB() {
+        dismiss(animated: true)
     }
-
-
 }
 
